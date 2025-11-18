@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.production
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Expo
+.expo/
+.expo-shared/
+
+# iOS
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xcworkspace
+ios/Pods/
+
+# Android
+*.apk
+*.aab
+.gradle/
+local.properties
+android/.gradle/
+android/app/build/
+
+# Secrets
+*.pem
+*.key
+secrets.json
