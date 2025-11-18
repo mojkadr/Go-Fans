@@ -5,11 +5,15 @@
 
 ## 📱 O Projekcie
 
+**Aplikacja do skanowania paragonów i zbierania punktów**
+
 Aplikacja mobilna pozwalająca na:
 
 - Skanowanie paragonów z lokalnych sklepów
-- Automatyczne przyznawanie punktów lojalnościowych
-- System marży dla sklepów partnerskich
+- Automatyczne przyznawanie punktów lojalnościowych (1 zł = 10 punktów)
+- System marży dla sklepów partnerskich (5%)
+
+**Status:** 🚧 W rozwoju - MVP do 15 grudnia 2025
 
 ## 🚀 Tech Stack
 
@@ -54,10 +58,14 @@ npm start
 ## 🗂️ Struktura Projektu
 
 ```
-mobile/          # Aplikacja React Native
-backend/         # API (opcjonalne, używamy Supabase)
-web-dashboard/   # Panel dla sklepów
-docs/            # Dokumentacja
+Go-Fans/
+├── README.md           # Główny opis projektu
+├── .gitignore          # Pliki ignorowane przez git
+├── docs/               # Dokumentacja
+│   ├── PROJECT_SPEC.md # Pełna specyfikacja projektu
+│   └── DEVELOPMENT.md  # Notatki z rozwoju
+├── mobile/             # Aplikacja React Native + Expo
+└── scripts/            # Pomocnicze skrypty
 ```
 
 ## 📋 Roadmap
@@ -80,5 +88,6 @@ MIT
 
 ## 🔗 Linki
 
-- [Dokumentacja projektu](./docs/PROJECT_SPEC.md)
-- [Notatki z rozwoju](./docs/DEVELOPMENT.md)
+- 📋 [Pełna specyfikacja projektu](./docs/PROJECT_SPEC.md) - przeczytaj to najpierw!
+- 📝 [Notatki z rozwoju](./docs/DEVELOPMENT.md)
+- 💻 [Repozytorium GitHub](https://github.com/mojkadr/Go-Fans)
