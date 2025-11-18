@@ -17,7 +17,7 @@ export default function RegisterScreen({ navigation }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('client');
-  const [loading, setLoading] = useState(false');
+  const [loading, setLoading] = useState(false);
 
   const roles = [
     { value: 'client', label: 'Klient', icon: '👤' },
