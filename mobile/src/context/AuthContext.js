@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
     checkUser();
 
     // Nasłuchuj zmian w autoryzacji
-    const { data: authListener } = supabase.auth.onAuthStateChange(
+    const { data } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
           setUser(session.user);
@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
     );
 
     return () => {
-      authListener?.subscription?.unsubscribe();
+      data?.subscription?.unsubscribe();
     };
   }, []);
 
