@@ -1,62 +1,62 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
+import {
+  AuthNavigator,
+  ClientNavigator,
+  AdminNavigator,
+  StoreWorkerNavigator,
+} from './src/navigation/AppNavigator';
 
-// MINIMALNY TEST - BEZ SUPABASE, BEZ NAWIGACJI
+function AppContent() {
+  const { user, role, loading } = useAuth();
+
+  // Loading state
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#007AFF" />
+        <Text style={styles.loadingText}>Ładowanie...</Text>
+      </View>
+    );
+  }
+
+  // Jeśli użytkownik nie zalogowany - pokaż ekran logowania
+  if (!user) {
+    return <AuthNavigator />;
+  }
+
+  // Jeśli zalogowany - pokaż odpowiedni panel w zależności od roli
+  switch (role) {
+    case 'admin':
+      return <AdminNavigator />;
+    case 'store_worker':
+      return <StoreWorkerNavigator />;
+    case 'client':
+    default:
+      return <ClientNavigator />;
+  }
+}
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="dark" />
-      <Text style={styles.title}>Go-Fans</Text>
-      <Text style={styles.subtitle}>Test aplikacji</Text>
-      
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={() => Alert.alert('Działa!', 'Aplikacja się uruchomiła!')}
-      >
-        <Text style={styles.buttonText}>Kliknij mnie</Text>
-      </TouchableOpacity>
-      
-      <Text style={styles.info}>Jeśli widzisz ten ekran - React Native działa!</Text>
-    </View>
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  loadingContainer: {
     flex: 1,
     backgroundColor: '#F2F2F7',
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
   },
-  title: {
-    fontSize: 42,
-    fontWeight: 'bold',
-    color: '#007AFF',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
+  loadingText: {
+    marginTop: 16,
+    fontSize: 16,
     color: '#8E8E93',
-    marginBottom: 40,
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 40,
-    paddingVertical: 16,
-    borderRadius: 12,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  info: {
-    fontSize: 14,
-    color: '#8E8E93',
-    textAlign: 'center',
   },
 });
